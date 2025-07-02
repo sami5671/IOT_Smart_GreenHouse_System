@@ -1,0 +1,54 @@
+I want to do this greenhouse smart irrigation or farming system by using Arduino uno r3. give me all components name connection with ardino and full working code also.
+
+Feature 1: Soil & Pump
+Read soilPercent; if <40%, Relay 1 ON powers pump. If the soilpercent if 80% power off the pump
+
+Feature 2: Temp & Humidity
+DHT22 for temp and humidity. If temperature is high like 50 degree celcies cross a threshold then turn on mist. When temperature is below 28 degree turn off mist
+
+Feature 3: Light & Grow Lamp
+BH1750 for getting low light. If it get low light turn on some LED blubs
+
+Feature 4: Air Quality
+MQ‑135 for getting gas sensing. If it detects the gas or poor air it will turn on the adjust fan.
+Feature 5: Water Level
+Water Level Sensor Depth of Detection from sensor to water. If distance > threshold (e.g., <10 cm), turn on the reservoir pump and if the tank full then turn of the pump.
+
+
+
+Feature			Component Name
+Soil Moisture	Capacitive Soil Moisture Sensor
+Pump Control	1-Channel Relay Module + 6V/12V Pump
+Temp & Humidity	DHT22 Sensor
+Mist Control	1-Channel Relay Module + 6V Mist Maker/Fan
+Light Detection	BH1750 Light Intensity Sensor (I2C)
+Grow Lamp	LED bulb via 1-Channel Relay Module
+Air Quality	MQ-135 Gas Sensor
+Fan Control	Fan via 1-Channel Relay Module
+Water Level	Water Level Sensor (Float or Depth Type)
+Reservoir Pump	1-Channel Relay Module + Water Pump
+Controller	Arduino Uno R3
+Power Supply	5V for sensors, 12V for pump/fans
+
+
+
+1. YL-69-soil-hygrometer-humidity-soil-moisture (100 tk)
+2. 6V submersible Pump (2) (80 * 2 tk)
+3. DHT22 Sensor (Temp & Humidity) (220 tk)
+4. 5v ultrasonic mist maker (350 tk)
+5. BH1750 Light Intensity Sensor (I2C) (220 tk)
+6. LED blubs 10 ta (50 tk)
+7. MQ-135 Gas Sensor (120 tk)
+8. cooling fan 6v (80 tk)
+9. Water Level Sensor depth detection (120 tk)
+10. Arduino Uno R3 (600)
+11. power supply 6v battery (300)
+12. 5/4 channel relay module 5v (200)
+13. breadboard (60)
+14. resistors (20)
+15. Fitting board / shit (400/500)
+16. pipe 2 fit 
+17. jumper wire male, female, double side (80*3 tk)
+
+Total = 100 + 160 + 220 + 350 + 220 + 50 + 120 + 80 + 120 + 600 + 300 + 200 + 60 + 20 + 450 + 0 + 240
+= ৳ 3290

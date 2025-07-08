@@ -1,5 +1,3 @@
-I want to do this greenhouse smart irrigation or farming system by using Arduino uno r3. give me all components name connection with ardino and full working code also.
-
 Feature 1: Soil & Pump
 Read soilPercent; if <40%, Relay 1 ON powers pump. If the soilpercent if 80% power off the pump
 

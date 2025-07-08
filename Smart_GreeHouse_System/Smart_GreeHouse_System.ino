@@ -1,98 +1,24 @@
-#include <DHT.h>
-#include <Wire.h>
-#include <BH1750.h>
-
-// Sensor Pins
-#define DHTPIN 2
-#define SOIL_PIN A0
-#define WATER_PIN A1
-#define MQ135_PIN A2
-
-// Relay Pins
-#define RELAY_SOIL_PUMP 3
-#define RELAY_MIST 4
-#define RELAY_GROW_LIGHT 5
-#define RELAY_FAN 6
-#define RELAY_RESERVOIR_PUMP 7
-
-// Thresholds
-#define SOIL_LOW 40
-#define SOIL_HIGH 80
-#define TEMP_HIGH 50
-#define TEMP_LOW 32
-#define LIGHT_THRESHOLD 100  // lux
-#define AIR_QUALITY_THRESHOLD 850
-#define WATER_LOW 200         // tank empty
-#define WATER_FULL 800        // tank full
-
-// DHT Setup
-#define DHTTYPE DHT22
-DHT dht(DHTPIN, DHTTYPE);
-
-// BH1750 Setup
-BH1750 lightMeter;
+// Define pin numbers for 5 LEDs
+int ledPins[] = {2, 3, 4, 5, 6};  // Array of LED pins
+int numLeds = 5;                  // Total number of LEDs
 
 void setup() {
-  Serial.begin(9600);
-  dht.begin();
-  Wire.begin();
-  lightMeter.begin();
-
-  // Set relay pins as outputs
-  pinMode(RELAY_SOIL_PUMP, OUTPUT);
-  pinMode(RELAY_MIST, OUTPUT);
-  pinMode(RELAY_GROW_LIGHT, OUTPUT);
-  pinMode(RELAY_FAN, OUTPUT);
-  pinMode(RELAY_RESERVOIR_PUMP, OUTPUT);
-
-  // Turn off all relays initially
-  digitalWrite(RELAY_SOIL_PUMP, LOW);
-  digitalWrite(RELAY_MIST, LOW);
-  digitalWrite(RELAY_GROW_LIGHT, LOW);
-  digitalWrite(RELAY_FAN, LOW);
-  digitalWrite(RELAY_RESERVOIR_PUMP, LOW);
+  // Set all pins as OUTPUT
+  for (int i = 0; i < numLeds; i++) {
+    pinMode(ledPins[i], OUTPUT);
+  }
 }
 
 void loop() {
-  // 1. Soil Moisture
-  int soilPercent = map(analogRead(SOIL_PIN), 1023, 300, 0, 100);
-  Serial.print("Soil: "); Serial.println(soilPercent);
-  if (soilPercent < SOIL_LOW)
-    digitalWrite(RELAY_SOIL_PUMP, HIGH);
-  else if (soilPercent > SOIL_HIGH)
-    digitalWrite(RELAY_SOIL_PUMP, LOW);
+  // Turn LEDs ON one by one
+  for (int i = 0; i < numLeds; i++) {
+    digitalWrite(ledPins[i], HIGH);
+    delay(30);  // wait 200ms
+  }
 
-  // 2. Temperature and Humidity
-  float temp = dht.readTemperature();
-  Serial.print("Temp: "); Serial.println(temp);
-  if (temp >= TEMP_HIGH)
-    digitalWrite(RELAY_MIST, HIGH);
-  else if (temp <= TEMP_LOW)
-    digitalWrite(RELAY_MIST, LOW);
-
-  // 3. Light Level
-  float lux = lightMeter.readLightLevel();
-  Serial.print("Light: "); Serial.println(lux);
-  if (lux < LIGHT_THRESHOLD)
-    digitalWrite(RELAY_GROW_LIGHT, HIGH);
-  else
-    digitalWrite(RELAY_GROW_LIGHT, LOW);
-
-  // 4. Air Quality
-  int airValue = analogRead(MQ135_PIN);
-  Serial.print("Air Quality: "); Serial.println(airValue);
-  if (airValue < AIR_QUALITY_THRESHOLD)
-    digitalWrite(RELAY_FAN, HIGH);
-  else
-    digitalWrite(RELAY_FAN, LOW);
-
-  // 5. Water Level
-  int waterLevel = analogRead(WATER_PIN);
-  Serial.print("Water Level: "); Serial.println(waterLevel);
-  if (waterLevel < WATER_LOW)
-    digitalWrite(RELAY_RESERVOIR_PUMP, HIGH);
-  else if (waterLevel > WATER_FULL)
-    digitalWrite(RELAY_RESERVOIR_PUMP, LOW);
-
-  delay(2000); // Delay between loops
+  // Turn LEDs OFF one by one
+  for (int i = 0; i < numLeds; i++) {
+    digitalWrite(ledPins[i], LOW);
+    delay(30);  // wait 200ms
+  }
 }

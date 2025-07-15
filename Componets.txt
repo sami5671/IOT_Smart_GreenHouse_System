@@ -12,7 +12,7 @@ MQ‑135 for getting gas sensing. If it detects the gas or poor air it will turn
 Feature 5: Water Level
 Water Level Sensor Depth of Detection from sensor to water. If distance > threshold (e.g., <10 cm), turn on the reservoir pump and if the tank full then turn of the pump.
 
-
+ok done
 
 Feature			Component Name
 Soil Moisture	Capacitive Soil Moisture Sensor

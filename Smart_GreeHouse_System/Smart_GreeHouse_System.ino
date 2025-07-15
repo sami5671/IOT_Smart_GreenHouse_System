@@ -1,24 +1,17 @@
-// Define pin numbers for 5 LEDs
-int ledPins[] = {2, 3, 4, 5, 6};  // Array of LED pins
-int numLeds = 5;                  // Total number of LEDs
+// Set LED pin (Built-in LED is usually on GPIO 2)
+const int ledPin = 2;
 
 void setup() {
-  // Set all pins as OUTPUT
-  for (int i = 0; i < numLeds; i++) {
-    pinMode(ledPins[i], OUTPUT);
-  }
+  // Set the LED pin as an output
+  pinMode(ledPin, OUTPUT);
 }
 
 void loop() {
-  // Turn LEDs ON one by one
-  for (int i = 0; i < numLeds; i++) {
-    digitalWrite(ledPins[i], HIGH);
-    delay(30);  // wait 200ms
-  }
+  // Turn the LED on
+  digitalWrite(ledPin, HIGH);
+  delay(1000); // Wait 1 second
 
-  // Turn LEDs OFF one by one
-  for (int i = 0; i < numLeds; i++) {
-    digitalWrite(ledPins[i], LOW);
-    delay(30);  // wait 200ms
-  }
+  // Turn the LED off
+  digitalWrite(ledPin, LOW);
+  delay(1000); // Wait 1 second
 }

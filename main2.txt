@@ -3,7 +3,7 @@
 #include <BH1750.h>
 
 // Sensor Pins
-#define DHTPIN 9
+#define DHTPIN 10
 #define SOIL_PIN A0
 #define WATER_PIN A1
 #define MQ135_PIN A2
